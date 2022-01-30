@@ -54,7 +54,7 @@ jobs:
           npm run build
           npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
           npm version $VERESION
-          npm publish $PUBLISH_OPTS
+          npm publish $PUBLISH_OPTS --access public
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     
