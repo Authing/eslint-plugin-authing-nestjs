@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-nestjs",
+  "name": "@authing/eslint-plugin-nestjs",
   "version": "0.0.1",
   "license": "MIT",
   "description": "ESLint rules for nestjs framework",
@@ -23,8 +23,10 @@
     "typescript": "^4.5.5"
   },
   "keywords": [
-    "eslint-plugin"
+    "eslint-plugin",
+    "eslint-plugin-nestjs"
   ],
+  "author": "https://github.com/authing",
   "repository": {
     "type": "git",
     "url": "https://github.com/Authing/eslint-plugin-nestjs.git"
