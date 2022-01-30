@@ -46,11 +46,22 @@ jobs:
           git config --global user.email ${{ github.event.inputs.email }}
           git config --global user.name ${{ github.event.inputs.name }}
 
-      - name: publish
+      - name: install
         run: |
           npm ci
+
+      - name: lint and test
+        run: |
+          npm run lint
+          npm run test
+
+      - name: build
+        run: |
           npm run clean
-          npm run build
+          npm rum build
+
+      - name: publish
+        run: |
           npm config set //registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN
           npm version $VERESION
           npm publish $PUBLISH_OPTS --access public

@@ -3,12 +3,14 @@ import { MethodDefinition, ClassDeclaration } from 'estree'
 
 const bodyParamMap = new Map()
 
+export const messages = {
+	invalidDtoClassValidator: 'Each dto field must have a class validator',
+	invalidDtoClassValidatorLength: 'There must be at least 2 class validators for a dto item with IsOptional'
+}
+
 export const useClassValidatorToDto = {
 	meta: {
-		messages: {
-			invalidDtoClassValidator: 'Each dto field must have a class validator',
-			invalidDtoClassValidatorLength: 'There must be at least 2 class validators for a dto item with IsOptional'
-		}
+		messages
 	},
 	create(context) {
 		return {
