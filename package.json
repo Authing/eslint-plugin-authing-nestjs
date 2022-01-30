@@ -1,5 +1,5 @@
 {
-  "name": "@authing/eslint-plugin-nestjs",
+  "name": "eslint-plugin-authing-nestjs",
   "version": "0.0.1",
   "license": "MIT",
   "description": "ESLint rules for nestjs framework",
