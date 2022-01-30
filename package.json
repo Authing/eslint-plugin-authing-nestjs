@@ -23,8 +23,7 @@
     "typescript": "^4.5.5"
   },
   "keywords": [
-    "eslint-plugin",
-    "eslint-plugin-nestjs"
+    "eslint-plugin-authing-nestjs"
   ],
   "author": "https://github.com/authing",
   "repository": {
