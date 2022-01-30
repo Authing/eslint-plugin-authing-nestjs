@@ -37,7 +37,7 @@ jobs:
       - name: before scripts
         run: |
           echo "Current branch: ${{ github.ref_name }}"
-          echo "Current publish version: ${{ github.event.inputs.version }}"
+          echo "Current publish version: ${{ env.VERESION }}"
           echo "Current user.name: ${{ github.event.inputs.name }}"
           echo "Current user.email: ${{ github.event.inputs.email }}"
           
