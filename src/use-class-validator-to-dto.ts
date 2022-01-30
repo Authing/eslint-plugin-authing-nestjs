@@ -7,7 +7,7 @@ export const useClassValidatorToDto = {
 	meta: {
 		messages: {
 			invalidDtoClassValidator: 'Each dto field must have a class validator',
-      invalidDtoClassValidatorLength: 'There must be at least 2 class validators for a dto item with IsOptional'
+			invalidDtoClassValidatorLength: 'There must be at least 2 class validators for a dto item with IsOptional'
 		}
 	},
 	create(context) {
