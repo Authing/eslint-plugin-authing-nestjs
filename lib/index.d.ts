@@ -47,10 +47,10 @@ export declare const rules: {
 export declare const configs: {
     recommended: {
         rules: {
-            forbid_body_parameter: number;
-            forbid_read_body_from_req: number;
-            use_class_as_type_in_method_of_controller: number;
-            use_class_validator_to_dto: number;
+            'authing-nestjs/forbid_body_parameter': number;
+            'authing-nestjs/forbid_read_body_from_req': number;
+            'authing-nestjs/use_class_as_type_in_method_of_controller': number;
+            'authing-nestjs/use_class_validator_to_dto': number;
         };
     };
 };
