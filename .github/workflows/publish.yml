@@ -48,7 +48,7 @@ jobs:
 
       - name: publish
         run: |
-          npm install
+          npm ci
           # npm run test
           npm run clean
           npm run build
