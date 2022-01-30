@@ -3,10 +3,10 @@
   "version": "0.0.5-alpha.1",
   "license": "MIT",
   "description": "ESLint rules for nestjs framework",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf lib",
+    "clean": "rimraf dist",
     "build": "tsc",
     "lint": "eslint --fix --ext .ts src/**.ts"
   },
@@ -14,7 +14,7 @@
     "tslib": "^2.3.1"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "devDependencies": {
     "@types/estree": "^0.0.50",

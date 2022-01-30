@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "dist",
     "allowJs": false,
     "removeComments": false,
     "strict": true,
