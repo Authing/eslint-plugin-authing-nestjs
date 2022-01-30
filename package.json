@@ -1,6 +1,6 @@
 {
   "name": "@authing/eslint-plugin-nestjs",
-  "version": "0.0.1",
+  "version": "0.0.1-aplha.0",
   "license": "MIT",
   "description": "ESLint rules for nestjs framework",
   "main": "lib/index.js",
