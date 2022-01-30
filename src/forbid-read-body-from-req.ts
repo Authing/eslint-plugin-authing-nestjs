@@ -3,11 +3,13 @@ import { MethodDefinition  } from 'estree'
 
 let reqName = 'req'
 
+export const messages = {
+	invalidBodyFromReq: 'It is forbidden to read body from Req'
+}
+
 export const forbidReadBodyFromReq = {
 	meta: {
-		messages: {
-			invalidBodyFromReq: 'It is forbidden to read body from Req'
-		}
+		messages
 	},
 	create(context) {
 		return {

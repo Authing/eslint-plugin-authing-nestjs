@@ -3,11 +3,13 @@ import { MethodDefinition, CallExpression } from 'estree'
 
 const bodyParamMap = new Map()
 
+export const messages = {
+	invalidArgument: 'It is forbidden to use parameters in the @Body'
+}
+
 export const forbidBodyParameters = {
 	meta: {
-		messages: {
-			invalidArgument: 'It is forbidden to use parameters in the @Body'
-		}
+		messages
 	},
 	create(context) {
 		return {
