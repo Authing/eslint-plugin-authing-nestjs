@@ -2,7 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 'latest'
+    ecmaVersion: 'es2015'
   },
   rules: {
     indent: [

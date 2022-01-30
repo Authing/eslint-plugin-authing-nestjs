@@ -3,11 +3,13 @@ import { MethodDefinition } from 'estree'
 
 const bodyParamMap = new Map()
 
+export const messages = {
+	invalidTypeAnnotation: 'The parameter type annotation in the method of the controller must be a class'
+}
+
 export const useClassAsTypeInMethodOfController = {
 	meta: {
-		messages: {
-			invalidTypeAnnotation: 'The parameter type annotation in the method of the controller must be a class'
-		}
+		messages
 	},
 	create(context) {
 		return {
