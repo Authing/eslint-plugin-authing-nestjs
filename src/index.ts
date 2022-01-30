@@ -13,7 +13,7 @@ export const rules = {
 export const configs = {
   recommended: {
     rules: {
-      'authing-nestjs/forbid_body_parameter': 1,
+      'authing-nestjs/forbid_body_parameters': 1,
       'authing-nestjs/forbid_read_body_from_req': 1,
       'authing-nestjs/use_class_as_type_in_method_of_controller': 1,
       'authing-nestjs/use_class_validator_to_dto': 1
