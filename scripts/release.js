@@ -32,7 +32,7 @@ async function readyGo () {
   if (stdout) {
     step('\nCommitting changes...')
     await run('git', ['add', '-A'])
-    await run('git', ['commit', '-m', `release: v${targetVersion}`])
+    await run('git', ['commit', '-m', `release: v${targetVersion} :rocket:`])
   } else {
     console.log('No changes to commit.')
   }
