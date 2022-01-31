@@ -4,10 +4,8 @@
 name: publish
 
 on:
-  push:
-    tags:
-      - v*
-        
+  workflow_dispatch:
+
 jobs:
 
   readyGo:
@@ -17,6 +15,7 @@ jobs:
     env: 
       NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       PUBLISH_OPTS: ${{ github.ref_name == 'master' && '--verbose' || '--verbose --tag=alpha' }}
+      
       
     steps:
 
@@ -35,10 +34,8 @@ jobs:
           
       - name: before scripts
         run: |
-          echo "Current branch: ${{ github.GITHUB_REF }}"
-          echo "Current publish version: ${{ env.VERSION }}"
-        env:
-          VERSION: ${{ steps.version.outputs.value }}
+          echo "Current branch: ${{ github.ref_name }}"
+          echo "Current publish version: ${{ steps.version.outputs.value  }}"
 
       - name: install packages
         run: |
