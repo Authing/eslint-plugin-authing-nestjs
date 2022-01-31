@@ -35,7 +35,7 @@ jobs:
           
       - name: before scripts
         run: |
-          echo "Current branch: ${{ github.ref_name }}"
+          echo "Current branch: ${{ github.GITHUB_REF }}"
           echo "Current publish version: ${{ env.VERSION }}"
         env:
           VERSION: ${{ steps.version.outputs.value }}
