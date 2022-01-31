@@ -42,3 +42,14 @@ module.exports = {
 ```
 
 - [Configure rules](https://eslint.org/docs/user-guide/configuring/#configuring-rules)
+
+## Contribution
+
+- Fork it
+- Create your feature branch (git checkout -b my-new-feature)
+- Commit your changes (git commit -am 'Add some feature')
+- Push to the branch (git push origin my-new-feature)
+- Create new Pull Request
+## Help
+
+Join us on forum: [#authing-chat](https://forum.authing.cn/)
