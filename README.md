@@ -16,13 +16,13 @@
 <div>eslint-plugin-authing-nestjs is an MIT-licensed open source project for <a target="_blank" href="https://github.com/nestjs/nest">nestjs</a> framework</div>
 <br/>
 
-## INSTALL
+## Install
 
 ```shell
 npm install --save-dev eslint-plugin-authing-nestjs
 ```
 
-## USAGE
+## Usage
 
 Configure it in your [configuration file](https://eslint.org/docs/user-guide/configuring/):
 
