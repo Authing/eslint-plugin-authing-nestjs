@@ -25,7 +25,7 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
         export class ExampleController { 
           @Post() 
           createOne(@Body() data: IType) {} 
-        }`, 
+        }`,
 			errors: [{
 				message: messages.invalidDtoClassValidator
 			}] 
@@ -40,7 +40,7 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
         export class ExampleController { 
           @Post() 
           createOne(@Body() data: IType) {} 
-        }`, 
+        }`,
 			errors: [{
 				message: messages.invalidDtoClassValidatorLength
 			}] 
@@ -57,10 +57,7 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
         export class ExampleController { 
           @Post() 
           createOne(@Body() data: IType) {} 
-        }`, 
-			errors: [{
-				message: messages.invalidDtoClassValidator
-			}] 
+        }`
 		},
 		{
 			code: `
