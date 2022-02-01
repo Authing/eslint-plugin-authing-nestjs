@@ -1,7 +1,7 @@
-import { forbidBodyParameters } from './forbid-body-parameters'
-import { forbidReadBodyFromReq } from './forbid-read-body-from-req'
-import { useClassAsTypeInMethodOfController } from './use-class-as-type-in-method-of-controller'
-import { useClassValidatorToDto } from './use-class-validator-to-dto'
+import { forbidBodyParameters } from './forbid-body-parameters/forbid-body-parameters'
+import { forbidReadBodyFromReq } from './forbid-read-body-from-req/forbid-read-body-from-req'
+import { useClassAsTypeInMethodOfController } from './use-class-as-type-in-method-of-controller/use-class-as-type-in-method-of-controller'
+import { useClassValidatorToDto } from './use-class-validator-to-dto/use-class-validator-to-dto'
 
 export const rules = {
 	'forbid_body_parameters': forbidBodyParameters,
