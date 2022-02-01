@@ -1,4 +1,4 @@
-import { getDecoratorByName } from './utils'
+import { getDecoratorByName } from '../utils'
 import { MethodDefinition, ClassDeclaration } from 'estree'
 
 const bodyParamMap = new Map()

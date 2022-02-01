@@ -36,6 +36,7 @@ module.exports = {
   extends: [
     'plugin:authing-nestjs/recommended'
   ],
+  // *** Usage: refer to unit test documents for specific rules ***
   rules: {
     // It is forbidden to use parameters in the @Body
     'authing-nestjs/forbid_body_parameters': 'warn', // or 'error'
