@@ -15,8 +15,7 @@ jobs:
     env: 
       NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       PUBLISH_OPTS: ${{ github.ref_name == 'master' && '--verbose' || '--verbose --tag=alpha' }}
-      
-      
+
     steps:
 
       - uses: actions/checkout@v2
