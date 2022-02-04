@@ -29,6 +29,28 @@ ruleTester.run('use-class-as-type-in-method-of-controller', useClassAsTypeInMeth
 			errors: [{
 				message: messages.invalidTypeAnnotation
 			}] 
+		},
+		{
+			code: `
+        @Controller('example') 
+        export class ExampleController { 
+          @Post() 
+          createOne(@Body() item) {} 
+        }`, 
+			errors: [{
+				message: messages.invalidTypeAnnotation
+			}] 
+		},
+		{
+			code: `
+        @Controller('example') 
+        export class ExampleController { 
+          @Post() 
+          createOne(@Body() any) {} 
+        }`, 
+			errors: [{
+				message: messages.invalidTypeAnnotation
+			}] 
 		}
 	],
 	valid: [
