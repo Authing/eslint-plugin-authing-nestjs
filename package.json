@@ -10,8 +10,8 @@
     "mocha": "node -r ts-node/register node_modules/mocha/bin/_mocha",
     "clean": "rimraf dist",
     "build": "tsc",
-    "lint": "eslint --ext .ts src/**.ts",
-    "lint:fix": "eslint --fix --ext .ts src/**.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
     "release": "node scripts/release.js"
   },
   "files": [

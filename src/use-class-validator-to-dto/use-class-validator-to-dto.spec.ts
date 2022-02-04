@@ -3,21 +3,21 @@ import { useClassValidatorToDto, messages } from './use-class-validator-to-dto'
 const { RuleTester } = require('eslint')
 
 const ruleTester = new RuleTester({
-	parser: require.resolve('@typescript-eslint/parser')
+  parser: require.resolve('@typescript-eslint/parser')
 })
 
 RuleTester.setDefaultConfig({
-	parserOptions: {
-		ecmaVersion: 2015,
-		sourceType: 'module',
-		ecmaFeatures: {}
-	}
+  parserOptions: {
+    ecmaVersion: 2015,
+    sourceType: 'module',
+    ecmaFeatures: {}
+  }
 })
 
 ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
-	invalid: [
-		{
-			code: `
+  invalid: [
+    {
+      code: `
         class IType {
           name: string
         }
@@ -26,12 +26,14 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
           @Post() 
           createOne(@Body() data: IType) {} 
         }`,
-			errors: [{
-				message: messages.invalidDtoClassValidator
-			}] 
-		},
-		{
-			code: `
+      errors: [
+        {
+          message: messages.invalidDtoClassValidator
+        }
+      ]
+    },
+    {
+      code: `
         class IType {
           @IsOptional()
           name: string
@@ -41,25 +43,29 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
           @Post() 
           createOne(@Body() data: IType) {} 
         }`,
-			errors: [{
-				message: messages.invalidDtoClassValidatorLength
-			}] 
-		},
+      errors: [
+        {
+          message: messages.invalidDtoClassValidatorLength
+        }
+      ]
+    },
     {
-			code: `
+      code: `
         @Controller('example') 
         export class ExampleController { 
           @Post() 
           createOne(@Body() a: any) {} 
         }`,
-      errors: [{
-        message: messages.invalidDtoClassValidator
-      }]
-		}
-	],
-	valid: [
-		{
-			code: `
+      errors: [
+        {
+          message: messages.invalidDtoClassValidator
+        }
+      ]
+    }
+  ],
+  valid: [
+    {
+      code: `
         class IType {
           @IsString()
           name: string
@@ -69,9 +75,9 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
           @Post() 
           createOne(@Body() data: IType) {} 
         }`
-		},
-		{
-			code: `
+    },
+    {
+      code: `
         class IType {
           @IsString()
           @IsOptional()
@@ -82,6 +88,6 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
           @Post() 
           createOne(@Body() data: IType) {} 
         }`
-		}
-	]
+    }
+  ]
 })
