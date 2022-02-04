@@ -22,6 +22,12 @@
 npm install --save-dev eslint-plugin-authing-nestjs
 ```
 
+or
+
+```shell
+yarn add eslint-plugin-authing-nestjs -d
+```
+
 ## Usage
 
 Configure it in your [configuration file](https://eslint.org/docs/user-guide/configuring/):
@@ -58,6 +64,9 @@ module.exports = {
 
 - [Configure rules](https://eslint.org/docs/user-guide/configuring/#configuring-rules)
 
+## Changelog
+
+Detailed changes for each release are documented in the [release notes](https://github.com/Authing/eslint-plugin-authing-nestjs/releases).
 ## Contribution
 
 - Fork it
@@ -68,3 +77,9 @@ module.exports = {
 ## Help
 
 Join us on forum: [#authing-chat](https://forum.authing.cn/)
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2022 Authing
