@@ -43,9 +43,16 @@ export const useClassValidatorToDto = {
 
 				if (bodyParam) {
 					const { typeAnnotation } = bodyParam
-					bodyParamMap.set(typeAnnotation.typeAnnotation.typeName.name, {
-						node
-					})
+					if (typeAnnotation?.typeAnnotation?.typeName?.name) {
+						bodyParamMap.set(typeAnnotation.typeAnnotation.typeName.name, {
+							node
+						})
+					} else {
+						context.report({
+							node,
+							messageId: 'invalidDtoClassValidator'
+						})
+					}
 				}
 			}
 		}
