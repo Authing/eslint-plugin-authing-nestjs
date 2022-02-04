@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: For reporting bugs or errors in the @authing/eslint-plugin-nestjs
+about: For reporting bugs or errors in the eslint-plugin-authing-nestjs
 title: 'Issue: Open an issue'
 labels: bug
 assignees: zhaoyiming0803
