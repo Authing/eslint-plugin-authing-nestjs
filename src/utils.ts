@@ -1,10 +1,10 @@
-import { IPattern, Decorator } from 'estree'
+import { IPattern, IDecorator } from 'estree'
 
 export function getDecoratorByName(
   node: IPattern,
   name: string
-): Decorator | undefined {
-  const result: Decorator | undefined = (node.decorators || []).find(d => {
+): IDecorator | undefined {
+  const result: IDecorator | undefined = (node.decorators || []).find(d => {
     const expression =
       d.expression &&
       d.expression.type === 'CallExpression' &&

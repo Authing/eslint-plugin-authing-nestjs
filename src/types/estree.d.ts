@@ -20,7 +20,7 @@ declare module 'estree' {
     callee: ICallee
   }
 
-  type Decorator = {
+  type IDecorator = {
     expression: ICallExpression
   }
 
@@ -50,7 +50,7 @@ declare module 'estree' {
   }
 
   type IPattern = Pattern & {
-    decorators: Decorator[]
+    decorators: IDecorator[]
     name: string
     typeAnnotation?: ITypeAnnotation
   }
@@ -67,11 +67,11 @@ declare module 'estree' {
 
   interface IMethodDefinition extends MethodDefinition {
     value: IFunctionExpression
-    decorators?: Decorator[]
+    decorators?: IDecorator[]
   }
 
   interface IPropertyDefinition extends PropertyDefinition {
-    decorators?: Decorator[]
+    decorators?: IDecorator[]
   }
 
   interface IClassBody extends ClassBody {
