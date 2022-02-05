@@ -1,5 +1,5 @@
 import { getDecoratorByName } from '../utils'
-import { MethodDefinition } from 'estree'
+import { IMethodDefinition, IPattern } from 'estree'
 
 let reqName = 'req'
 
@@ -22,9 +22,8 @@ export const forbidReadBodyFromReq = {
           })
         }
       },
-      MethodDefinition: (node: MethodDefinition) => {
-        // reqParam: Pattern
-        const reqParam: any = node.value.params.find(p =>
+      MethodDefinition: (node: IMethodDefinition) => {
+        const reqParam: IPattern | undefined = node.value.params.find(p =>
           getDecoratorByName(p, 'Req')
         )
 

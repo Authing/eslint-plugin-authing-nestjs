@@ -1,5 +1,5 @@
 import { getDecoratorByName } from '../utils'
-import { MethodDefinition } from 'estree'
+import { IMethodDefinition, IPattern } from 'estree'
 
 const bodyParamMap = new Map()
 
@@ -23,9 +23,8 @@ export const useClassAsTypeInMethodOfController = {
           })
         }
       },
-      MethodDefinition: (node: MethodDefinition) => {
-        // bodyParam: Pattern
-        const bodyParam: any = node.value.params.find(p =>
+      MethodDefinition: (node: IMethodDefinition) => {
+        const bodyParam: IPattern | undefined = node.value.params.find(p =>
           getDecoratorByName(p, 'Body')
         )
 

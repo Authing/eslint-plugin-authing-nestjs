@@ -1,18 +1,14 @@
-import { CallExpression, Expression } from 'estree'
-
-export type Decorator = {
-  expression: Expression
-}
+import { IPattern, Decorator } from 'estree'
 
 export function getDecoratorByName(
-  node: any /** node: Pattern */,
+  node: IPattern,
   name: string
 ): Decorator | undefined {
   const result: Decorator | undefined = (node.decorators || []).find(d => {
     const expression =
       d.expression &&
       d.expression.type === 'CallExpression' &&
-      (d.expression as CallExpression)
+      d.expression
     return (
       expression &&
       expression.callee.type === 'Identifier' &&

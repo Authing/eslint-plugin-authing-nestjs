@@ -13,7 +13,8 @@
     "removeComments": false,
     "strict": true,
     "noUnusedLocals": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "types": ["node"]
   },
   "include": [
     "src/**/*.ts"
