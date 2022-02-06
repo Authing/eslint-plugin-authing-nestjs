@@ -1,25 +1,25 @@
 import { CallExpression } from 'estree'
 
 declare module 'estree' {
-  interface ICallee {
+  export interface ICallee {
     type: string
     [name: string]: any
   }
-  interface BaseNode {
+  export interface BaseNode {
     name?: string
     callee?: ICallee
   }
 
-  type IDecorator = {
+  export type IDecorator = {
     expression: CallExpression
   }
 
-  interface ICodeStation {
+  export interface ICodeStation {
     line: number
     column: number
   }
 
-  interface IPureTypeAnnotation {
+  export interface IPureTypeAnnotation {
     loc: {
       start: ICodeStation
       end: ICodeStation
@@ -30,41 +30,40 @@ declare module 'estree' {
       typeName?: TypeName
     }
   }
-
-  interface TypeName extends IPureTypeAnnotation {
+  
+  export interface TypeName extends IPureTypeAnnotation {
     name: string
   }
 
-  interface ITypeAnnotation extends IPureTypeAnnotation {
+  export interface ITypeAnnotation extends IPureTypeAnnotation {
     parent: ITypeAnnotation
   }
 
-  interface IPattern {
+  export interface IPattern {
     decorators?: IDecorator[]
     name?: string
     typeAnnotation?: ITypeAnnotation
   }
 
-  interface Identifier extends IPattern {}
+  export interface Identifier extends IPattern {}
 
-  interface ObjectPattern extends IPattern {}
+  export interface ObjectPattern extends IPattern {}
 
-  interface ArrayPattern extends IPattern {}
+  export interface ArrayPattern extends IPattern {}
 
-  interface RestElement extends IPattern {}
+  export interface RestElement extends IPattern {}
 
-  interface AssignmentPattern extends IPattern {}
+  export interface AssignmentPattern extends IPattern {}
 
-  interface MemberExpression extends IPattern {}
-  interface BaseFunction {
+  export interface MemberExpression extends IPattern {}
+  export interface BaseFunction {
     params: Array<Pattern>
   }
-
-  interface MethodDefinition {
+  export interface MethodDefinition {
     decorators?: IDecorator[]
   }
 
-  interface PropertyDefinition {
+  export interface PropertyDefinition {
     decorators?: IDecorator[]
   }
 }
