@@ -6,12 +6,13 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
     "test": "npm run mocha -- src/**/*.spec.ts",
     "mocha": "node -r ts-node/register node_modules/mocha/bin/_mocha",
     "clean": "rimraf dist",
     "build": "tsc",
-    "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix",
+    "copy": "node scripts/copy.js",
     "release": "node scripts/release.js"
   },
   "files": [
@@ -32,6 +33,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "execa": "^4.0.2",
+    "fs-extra": "^9.0.1",
+    "globby": "^11.0.1",
     "lint-staged": "^12.3.2",
     "mocha": "^9.2.0",
     "node-console-colors": "^1.1.4",

@@ -1,7 +1,7 @@
-import { IPattern, IDecorator } from 'estree'
+import { Pattern, IDecorator } from 'estree'
 
 export function getDecoratorByName(
-  node: IPattern,
+  node: Pattern,
   name: string
 ): IDecorator | undefined {
   const result: IDecorator | undefined = (node.decorators || []).find(d => {

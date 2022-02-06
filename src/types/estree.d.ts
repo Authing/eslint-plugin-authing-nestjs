@@ -1,27 +1,17 @@
-import {
-  Pattern,
-  BaseFunction,
-  MethodDefinition,
-  BlockStatement,
-  ClassDeclaration,
-  ClassBody,
-  PropertyDefinition
-} from 'estree'
+import { CallExpression } from 'estree'
 
 declare module 'estree' {
-  export interface ICallee {
-    name: string
-    type: 'Identifier'
+  interface ICallee {
+    type: string
     [name: string]: any
   }
-
-  type ICallExpression = CallExpression & {
-    name: string
-    callee: ICallee
+  interface BaseNode {
+    name?: string
+    callee?: ICallee
   }
 
   type IDecorator = {
-    expression: ICallExpression
+    expression: CallExpression
   }
 
   interface ICodeStation {
@@ -49,36 +39,32 @@ declare module 'estree' {
     parent: ITypeAnnotation
   }
 
-  type IPattern = Pattern & {
-    decorators: IDecorator[]
-    name: string
+  interface IPattern {
+    decorators?: IDecorator[]
+    name?: string
     typeAnnotation?: ITypeAnnotation
   }
 
-  interface IBaseFunction extends BaseFunction {
-    params: Array<IPattern>
+  interface Identifier extends IPattern {}
+
+  interface ObjectPattern extends IPattern {}
+
+  interface ArrayPattern extends IPattern {}
+
+  interface RestElement extends IPattern {}
+
+  interface AssignmentPattern extends IPattern {}
+
+  interface MemberExpression extends IPattern {}
+  interface BaseFunction {
+    params: Array<Pattern>
   }
 
-  interface IFunctionExpression extends IBaseFunction {
-    id?: Identifier | null | undefined
-    type: 'FunctionExpression'
-    body: BlockStatement
-  }
-
-  interface IMethodDefinition extends MethodDefinition {
-    value: IFunctionExpression
+  interface MethodDefinition {
     decorators?: IDecorator[]
   }
 
-  interface IPropertyDefinition extends PropertyDefinition {
+  interface PropertyDefinition {
     decorators?: IDecorator[]
-  }
-
-  interface IClassBody extends ClassBody {
-    body: Array<IMethodDefinition | IPropertyDefinition>
-  }
-
-  interface IClassDeclaration extends ClassDeclaration {
-    body: IClassBody
   }
 }
