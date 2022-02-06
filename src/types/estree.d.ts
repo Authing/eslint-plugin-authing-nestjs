@@ -30,7 +30,7 @@ declare module 'estree' {
       typeName?: TypeName
     }
   }
-  
+
   export interface TypeName extends IPureTypeAnnotation {
     name: string
   }
