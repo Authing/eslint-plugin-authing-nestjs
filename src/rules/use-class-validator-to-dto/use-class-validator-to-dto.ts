@@ -1,9 +1,9 @@
-import { getDecoratorByName } from '../utils'
+import { getDecoratorByName } from '../../utils'
 import {
-  IMethodDefinition,
-  IClassDeclaration,
-  IPropertyDefinition,
-  IPattern
+  MethodDefinition,
+  PropertyDefinition,
+  ClassDeclaration,
+  Pattern
 } from 'estree'
 
 const bodyParamMap = new Map()
@@ -20,13 +20,13 @@ export const useClassValidatorToDto = {
   },
   create(context) {
     return {
-      ClassDeclaration(node: IClassDeclaration) {
+      ClassDeclaration(node: ClassDeclaration) {
         const config = bodyParamMap.get(node.id?.name)
         if (!config) {
           return
         }
         node.body.body.forEach(
-          (nodeItem: IMethodDefinition | IPropertyDefinition) => {
+          (nodeItem: MethodDefinition | PropertyDefinition) => {
             if (!nodeItem.decorators?.length) {
               context.report({
                 node: config.node,
@@ -46,8 +46,8 @@ export const useClassValidatorToDto = {
           }
         )
       },
-      MethodDefinition: (node: IMethodDefinition) => {
-        const bodyParam: IPattern | undefined = node.value.params.find(p =>
+      MethodDefinition: (node: MethodDefinition) => {
+        const bodyParam: Pattern | undefined = node.value.params.find(p =>
           getDecoratorByName(p, 'Body')
         )
 

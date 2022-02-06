@@ -49,6 +49,7 @@ jobs:
         run: |
           npm run clean
           npm run build
+          npm run copy
 
       - name: publish
         run: |

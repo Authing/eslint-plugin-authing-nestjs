@@ -1,7 +1,7 @@
-import { getDecoratorByName } from '../utils'
-import { IMethodDefinition, IPattern } from 'estree'
+import { getDecoratorByName } from '../../utils'
+import { MethodDefinition, Pattern } from 'estree'
 
-let reqName = 'req'
+let reqName: string | undefined = 'req'
 
 export const messages = {
   invalidBodyFromReq: 'It is forbidden to read body from Req'
@@ -22,8 +22,8 @@ export const forbidReadBodyFromReq = {
           })
         }
       },
-      MethodDefinition: (node: IMethodDefinition) => {
-        const reqParam: IPattern | undefined = node.value.params.find(p =>
+      MethodDefinition: (node: MethodDefinition) => {
+        const reqParam: Pattern | undefined = node.value.params.find(p =>
           getDecoratorByName(p, 'Req')
         )
 

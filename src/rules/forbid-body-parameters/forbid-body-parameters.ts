@@ -1,5 +1,5 @@
-import { getDecoratorByName } from '../utils'
-import { IMethodDefinition, IPattern, IDecorator } from 'estree'
+import { getDecoratorByName } from '../../utils'
+import { MethodDefinition, Pattern, IDecorator } from 'estree'
 
 export const messages = {
   invalidArgument: 'It is forbidden to use parameters in the @Body'
@@ -11,9 +11,9 @@ export const forbidBodyParameters = {
   },
   create(context) {
     return {
-      MethodDefinition: (node: IMethodDefinition) => {
-        const bodyParam: IPattern | undefined = node.value.params.find(
-          (p: IPattern) => getDecoratorByName(p, 'Body')
+      MethodDefinition: (node: MethodDefinition) => {
+        const bodyParam: Pattern | undefined = node.value.params.find(
+          (p: Pattern) => getDecoratorByName(p, 'Body')
         )
 
         if (bodyParam) {

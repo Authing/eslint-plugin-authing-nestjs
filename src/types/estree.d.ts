@@ -1,35 +1,25 @@
-import {
-  Pattern,
-  BaseFunction,
-  MethodDefinition,
-  BlockStatement,
-  ClassDeclaration,
-  ClassBody,
-  PropertyDefinition
-} from 'estree'
+import { CallExpression } from 'estree'
 
 declare module 'estree' {
   export interface ICallee {
-    name: string
-    type: 'Identifier'
+    type: string
     [name: string]: any
   }
-
-  type ICallExpression = CallExpression & {
-    name: string
-    callee: ICallee
+  export interface BaseNode {
+    name?: string
+    callee?: ICallee
   }
 
-  type IDecorator = {
-    expression: ICallExpression
+  export type IDecorator = {
+    expression: CallExpression
   }
 
-  interface ICodeStation {
+  export interface ICodeStation {
     line: number
     column: number
   }
 
-  interface IPureTypeAnnotation {
+  export interface IPureTypeAnnotation {
     loc: {
       start: ICodeStation
       end: ICodeStation
@@ -41,44 +31,39 @@ declare module 'estree' {
     }
   }
 
-  interface TypeName extends IPureTypeAnnotation {
+  export interface TypeName extends IPureTypeAnnotation {
     name: string
   }
 
-  interface ITypeAnnotation extends IPureTypeAnnotation {
+  export interface ITypeAnnotation extends IPureTypeAnnotation {
     parent: ITypeAnnotation
   }
 
-  type IPattern = Pattern & {
-    decorators: IDecorator[]
-    name: string
+  export interface IPattern {
+    decorators?: IDecorator[]
+    name?: string
     typeAnnotation?: ITypeAnnotation
   }
 
-  interface IBaseFunction extends BaseFunction {
-    params: Array<IPattern>
-  }
+  export interface Identifier extends IPattern {}
 
-  interface IFunctionExpression extends IBaseFunction {
-    id?: Identifier | null | undefined
-    type: 'FunctionExpression'
-    body: BlockStatement
-  }
+  export interface ObjectPattern extends IPattern {}
 
-  interface IMethodDefinition extends MethodDefinition {
-    value: IFunctionExpression
+  export interface ArrayPattern extends IPattern {}
+
+  export interface RestElement extends IPattern {}
+
+  export interface AssignmentPattern extends IPattern {}
+
+  export interface MemberExpression extends IPattern {}
+  export interface BaseFunction {
+    params: Array<Pattern>
+  }
+  export interface MethodDefinition {
     decorators?: IDecorator[]
   }
 
-  interface IPropertyDefinition extends PropertyDefinition {
+  export interface PropertyDefinition {
     decorators?: IDecorator[]
-  }
-
-  interface IClassBody extends ClassBody {
-    body: Array<IMethodDefinition | IPropertyDefinition>
-  }
-
-  interface IClassDeclaration extends ClassDeclaration {
-    body: IClassBody
   }
 }

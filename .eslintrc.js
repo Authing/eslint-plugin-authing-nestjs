@@ -36,6 +36,7 @@ module.exports = {
     ],
     // https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58605
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-var-requires': 'off'
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-interface': 'off'
   }
 }
