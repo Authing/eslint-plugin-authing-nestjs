@@ -6,9 +6,7 @@ export function getDecoratorByName(
 ): IDecorator | undefined {
   const result: IDecorator | undefined = (node.decorators || []).find(d => {
     const expression =
-      d.expression &&
-      d.expression.type === 'CallExpression' &&
-      d.expression
+      d.expression && d.expression.type === 'CallExpression' && d.expression
     return (
       expression &&
       expression.callee.type === 'Identifier' &&
