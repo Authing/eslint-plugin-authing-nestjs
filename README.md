@@ -46,7 +46,7 @@ module.exports = {
   // *** Usage: refer to unit test documents for specific rules ***
   rules: {
     // It is forbidden to use parameters in the @Body
-    'authing-nestjs/forbid_body_parameters': 'warn', // or 'error'
+    'authing-nestjs/forbid_body_parameters': 'warn', // default 'error'
 
     // It is forbidden to read body from Req
     'authing-nestjs/forbid_read_body_from_req': 'warn',
