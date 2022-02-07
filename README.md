@@ -3,8 +3,9 @@
 <div align=center><img width="300" src="https://files.authing.co/authing-console/authing-logo-new-20210924.svg"></div>
 
 <div align="center">
-  <a href="javascript:;"><img src="https://img.shields.io/badge/test-passing-brightgreen" /></a>
   <a href="https://badge.fury.io/js/eslint-plugin-authing-nestjs"><img src="https://badge.fury.io/js/eslint-plugin-authing-nestjs.svg" alt="npm version" height="18"></a>
+  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml" target="_blank"><img src="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml/badge.svg?branch=master"></a>
+  <a href="javascript:;"><img src="https://img.shields.io/badge/test-passing-brightgreen" /></a>
   <a href="https://npmcharts.com/compare/eslint-plugin-authing-nestjs" target="_blank"><img src="https://img.shields.io/npm/dm/eslint-plugin-authing-nestjs" alt="download"></a>
   <a href="https://standardjs.com" target="_blank"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standardjs"></a>
   <a href="javascript:;" target="_blank"><img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="Node"></a>
