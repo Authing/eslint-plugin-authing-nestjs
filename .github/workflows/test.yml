@@ -3,7 +3,21 @@
 
 name: test
 
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - '*.md'
+      - LICENSE
+      - .gitignore
+      - .npmignore
+      - .editorconfig
+  pull_request:
+    paths-ignore:
+      - '*.md'
+      - LICENSE
+      - .gitignore
+      - .npmignore
+      - .editorconfig
         
 jobs:
 
