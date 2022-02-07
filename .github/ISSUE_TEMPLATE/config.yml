@@ -3,3 +3,6 @@ contact_links:
  - name: Questions
    url: https://forum.authing.cn/
    about: For general questions, support requests and discussions, include new features
+ - name: Discussions
+   url: https://github.com/Authing/eslint-plugin-authing-nestjs/discussions
+   about: You can also discuss the problem here
