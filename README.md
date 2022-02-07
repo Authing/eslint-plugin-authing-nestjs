@@ -1,20 +1,41 @@
 # eslint-plugin-authing-nestjs
 
-<div align=center><img width="300" src="https://files.authing.co/authing-console/authing-logo-new-20210924.svg"></div>
+<div align=center>
+  <img width="300" src="https://files.authing.co/authing-console/authing-logo-new-20210924.svg" alt="authing">
+</div>
 
 <div align="center">
-  <a href="https://badge.fury.io/js/eslint-plugin-authing-nestjs"><img src="https://badge.fury.io/js/eslint-plugin-authing-nestjs.svg" alt="npm version" height="18"></a>
-  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml" target="_blank"><img src="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml/badge.svg?branch=master"></a>
-  <a href="javascript:;"><img src="https://img.shields.io/badge/test-passing-brightgreen" /></a>
-  <a href="https://npmcharts.com/compare/eslint-plugin-authing-nestjs" target="_blank"><img src="https://img.shields.io/npm/dm/eslint-plugin-authing-nestjs" alt="download"></a>
-  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/pulls" target="_blank"><img src="https://img.shields.io/badge/PRs-welcome-orange" alt="standardjs"></a>
-  <a href="javascript:;" target="_blank"><img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="Node"></a>
-  <a href="https://forum.authing.cn/" target="_blank"><img src="https://img.shields.io/badge/chat-forum-blue" /></a>
-  <a href="javascript:;" target="_blank"><img src="https://img.shields.io/badge/node-%3E=12-green.svg" alt="Node"></a>
+  <a href="https://badge.fury.io/js/eslint-plugin-authing-nestjs">
+    <img src="https://badge.fury.io/js/eslint-plugin-authing-nestjs.svg" alt="npm version" height="18" />
+  </a>
+  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml" target="_blank">
+    <img src="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml/badge.svg?branch=master" alt="github ci" />
+  </a>
+  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/test.yml">
+    <img src="https://img.shields.io/badge/test-passing-brightgreen" alt="testing" />
+  </a>
+  <a href="https://npmcharts.com/compare/eslint-plugin-authing-nestjs" target="_blank">
+    <img src="https://img.shields.io/npm/dm/eslint-plugin-authing-nestjs" alt="download" />
+  </a>
+  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/pulls" target="_blank">
+    <img src="https://img.shields.io/badge/PRs-welcome-orange" alt="welcome pr" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="license" />
+  </a>
+  <a href="https://forum.authing.cn/" target="_blank">
+    <img src="https://img.shields.io/badge/chat-forum-blue" alt="forum" />
+  </a>
+  <a href="https://nodejs.org/en/" target="_blank">
+    <img src="https://img.shields.io/badge/node-%3E=12-green.svg" alt="nodejs">
+  </a>
 </div>
 <br/>
-
-<div>eslint-plugin-authing-nestjs is an MIT-licensed open source project for <a target="_blank" href="https://github.com/nestjs/nest">nestjs</a> framework</div>
+<div>
+  <span>eslint-plugin-authing-nestjs is an MIT-licensed open source project for</span>
+  <a target="_blank" href="https://github.com/nestjs/nest"> nestjs </a>
+  <span>framework</span>
+</div>
 <br/>
 
 ## Install
@@ -26,7 +47,7 @@ npm install --save-dev eslint-plugin-authing-nestjs
 or
 
 ```shell
-yarn add eslint-plugin-authing-nestjs -d
+yarn add eslint-plugin-authing-nestjs -D
 ```
 
 ## Usage
