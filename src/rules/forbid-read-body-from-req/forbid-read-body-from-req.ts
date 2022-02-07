@@ -1,5 +1,5 @@
 import { getDecoratorByName } from '../../utils'
-import { MethodDefinition, Pattern } from 'estree'
+import { MemberExpression, MethodDefinition, Pattern } from 'estree'
 
 let reqName: string | undefined = 'req'
 
@@ -13,7 +13,7 @@ export const forbidReadBodyFromReq = {
   },
   create(context) {
     return {
-      MemberExpression(node) {
+      MemberExpression(node: MemberExpression) {
         if (node.object.name === reqName && node.property.name === 'body') {
           reqName = ''
           context.report({
