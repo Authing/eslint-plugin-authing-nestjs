@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "test": "npm run mocha -- src/**/*.spec.ts",
     "mocha": "node -r ts-node/register node_modules/mocha/bin/_mocha",
     "clean": "rimraf dist",
