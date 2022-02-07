@@ -28,12 +28,6 @@ module.exports = {
       'error',
       'never'
     ],
-    'no-unused-vars': [
-      'error',
-      // we are only using this rule to check for unused arguments since TS
-      // catches unused variables but not args.
-      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
-    ],
     // https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58605
     '@typescript-eslint/no-explicit-any': ['error'],
     '@typescript-eslint/no-var-requires': 'off',

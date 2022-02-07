@@ -14,6 +14,7 @@ declare module 'estree' {
   }
 
   export type IDecorator = {
+    type: string
     expression: CallExpression
   }
 
@@ -102,10 +103,17 @@ declare module 'estree' {
     parent: Program
   }
 
+  interface IReportFunctionParams {
+    node: BaseNode
+    messageId: string
+  }
+  interface IReportFunction {
+    (data: IReportFunctionParams): void
+  }
   export interface IContext {
     id: string
     options: unknown[]
-    report: FunctionDeclaration | FunctionExpression | ArrowFunctionExpression
+    report: IReportFunction
     [name: string]: unknown
   }
 }
