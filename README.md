@@ -7,7 +7,7 @@
   <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml" target="_blank"><img src="https://github.com/Authing/eslint-plugin-authing-nestjs/actions/workflows/ci.yml/badge.svg?branch=master"></a>
   <a href="javascript:;"><img src="https://img.shields.io/badge/test-passing-brightgreen" /></a>
   <a href="https://npmcharts.com/compare/eslint-plugin-authing-nestjs" target="_blank"><img src="https://img.shields.io/npm/dm/eslint-plugin-authing-nestjs" alt="download"></a>
-  <a href="https://standardjs.com" target="_blank"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standardjs"></a>
+  <a href="https://github.com/Authing/eslint-plugin-authing-nestjs/pulls" target="_blank"><img src="https://img.shields.io/badge/PRs-welcome-orange" alt="standardjs"></a>
   <a href="javascript:;" target="_blank"><img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="Node"></a>
   <a href="https://forum.authing.cn/" target="_blank"><img src="https://img.shields.io/badge/chat-forum-blue" /></a>
   <a href="javascript:;" target="_blank"><img src="https://img.shields.io/badge/node-%3E=12-green.svg" alt="Node"></a>
