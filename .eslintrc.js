@@ -28,6 +28,7 @@ module.exports = {
       'error',
       'never'
     ],
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
     // https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58605
     '@typescript-eslint/no-explicit-any': ['error'],
     '@typescript-eslint/no-var-requires': 'off',
