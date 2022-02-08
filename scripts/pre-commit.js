@@ -28,5 +28,5 @@ function lintCode(stdout) {
   arr = arr
     .map(item => item.replace(/\s/g, ''))
     .filter(item => path.extname(item) === '.ts')
-    .forEach(item => run('npm', ['run', 'lint:pure', item]))
+    .forEach(item => run('npm', ['run', 'lint:custom', item]))
 }

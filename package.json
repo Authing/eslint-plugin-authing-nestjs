@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
-    "lint:pure": "eslint",
+    "lint:custom": "eslint",
     "test": "npm run mocha -- src/**/*.spec.ts",
     "mocha": "node -r ts-node/register node_modules/mocha/bin/_mocha",
     "clean": "rimraf dist",
