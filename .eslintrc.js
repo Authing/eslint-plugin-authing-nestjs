@@ -28,14 +28,16 @@ module.exports = {
       'error',
       'never'
     ],
-    'no-unused-vars': [
-      'error',
-      // we are only using this rule to check for unused arguments since TS
-      // catches unused variables but not args.
-      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
-    ],
+    // `eslint/no-unused-vars` will check all qualified ts files, include d.ts
+    // using interface to define function types is compliant, but `eslint/no-unused-vars` will prompt for unused parameters......
+    // so set `args === none` here
+    // and leave `no-unused-vars` to `@typescript-eslint/no-unused-vars`
+    "no-unused-vars": ["error", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+    "@typescript-eslint/no-unused-vars": ['error'],
+    
     // https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/58605
-    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': ['error'],
+    
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-empty-interface': 'off'
   }

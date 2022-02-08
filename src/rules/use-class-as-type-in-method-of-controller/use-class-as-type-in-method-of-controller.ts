@@ -1,5 +1,10 @@
 import { getDecoratorByName } from '../../utils'
-import { MethodDefinition, Pattern } from 'estree'
+import {
+  IContext,
+  ITSInterfaceDeclaration,
+  MethodDefinition,
+  Pattern
+} from 'estree'
 
 const bodyParamMap = new Map()
 
@@ -12,9 +17,9 @@ export const useClassAsTypeInMethodOfController = {
   meta: {
     messages
   },
-  create(context) {
+  create(context: IContext) {
     return {
-      TSInterfaceDeclaration(node) {
+      TSInterfaceDeclaration(node: ITSInterfaceDeclaration) {
         const config = bodyParamMap.get(node.id.name)
         if (config) {
           context.report({

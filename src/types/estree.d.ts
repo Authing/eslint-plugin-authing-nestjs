@@ -1,9 +1,12 @@
-import { CallExpression } from 'estree'
+/**
+ * Expand the estree type step by step according to the runtime
+ */
 
+import { CallExpression } from 'estree'
 declare module 'estree' {
   export interface ICallee {
     type: string
-    [name: string]: any
+    name?: string
   }
   export interface BaseNode {
     name?: string
@@ -11,6 +14,7 @@ declare module 'estree' {
   }
 
   export type IDecorator = {
+    type: string
     expression: CallExpression
   }
 
@@ -65,5 +69,51 @@ declare module 'estree' {
 
   export interface PropertyDefinition {
     decorators?: IDecorator[]
+  }
+
+  export interface ITSInterfaceBody {
+    type: 'TSInterfaceBody'
+    loc: {
+      start: ICodeStation
+      end: ICodeStation
+    }
+    range: [number, number]
+    body: {
+      computed: boolean
+      type: 'TSPropertySignature'
+      loc: {
+        start: ICodeStation
+        end: ICodeStation
+      }
+      range: [number, number]
+      [name: string]: unknown
+    }
+    parent: ITSInterfaceBody
+  }
+
+  export interface ITSInterfaceDeclaration {
+    loc: {
+      start: ICodeStation
+      end: ICodeStation
+    }
+    range: [number, number]
+    type: 'TSInterfaceDeclaration'
+    id: Identifier
+    body: ITSInterfaceBody[]
+    parent: Program
+  }
+
+  interface IReportFunctionParams {
+    node: BaseNode
+    messageId: string
+  }
+  interface IReportFunction {
+    (data: IReportFunctionParams): void
+  }
+  export interface IContext {
+    id: string
+    options: unknown[]
+    report: IReportFunction
+    [name: string]: unknown
   }
 }

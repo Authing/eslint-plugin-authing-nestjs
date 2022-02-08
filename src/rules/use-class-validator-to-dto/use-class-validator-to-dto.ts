@@ -3,7 +3,8 @@ import {
   MethodDefinition,
   PropertyDefinition,
   ClassDeclaration,
-  Pattern
+  Pattern,
+  IContext
 } from 'estree'
 
 const bodyParamMap = new Map()
@@ -18,7 +19,7 @@ export const useClassValidatorToDto = {
   meta: {
     messages
   },
-  create(context) {
+  create(context: IContext) {
     return {
       ClassDeclaration(node: ClassDeclaration) {
         const config = bodyParamMap.get(node.id?.name)
