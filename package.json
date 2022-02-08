@@ -8,12 +8,14 @@
   "scripts": {
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "lint:pure": "eslint",
     "test": "npm run mocha -- src/**/*.spec.ts",
     "mocha": "node -r ts-node/register node_modules/mocha/bin/_mocha",
     "clean": "rimraf dist",
     "build": "tsc",
     "copy": "node scripts/copy.js",
-    "release": "node scripts/release.js"
+    "release": "node scripts/release.js",
+    "precommit": "node scripts/pre-commit.js"
   },
   "files": [
     "dist"
@@ -42,6 +44,7 @@
     "tslint": "^5.8.0",
     "typescript": "^4.5.5"
   },
+  "pre-commit": "precommit",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
