@@ -3,6 +3,7 @@
  */
 
 import { CallExpression } from 'estree'
+
 declare module 'estree' {
   export interface ICallee {
     type: string
@@ -60,9 +61,11 @@ declare module 'estree' {
   export interface AssignmentPattern extends IPattern {}
 
   export interface MemberExpression extends IPattern {}
+
   export interface BaseFunction {
     params: Array<Pattern>
   }
+
   export interface MethodDefinition {
     decorators?: IDecorator[]
   }
@@ -107,9 +110,11 @@ declare module 'estree' {
     node: BaseNode
     messageId: string
   }
+
   interface IReportFunction {
     (data: IReportFunctionParams): void
   }
+
   export interface IContext {
     id: string
     options: unknown[]
