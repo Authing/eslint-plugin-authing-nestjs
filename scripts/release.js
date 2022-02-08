@@ -1,7 +1,6 @@
 // npm run release --target_version=xxx
 
 const fs = require('fs')
-const path = require('path')
 const chalk = require('chalk')
 const execa = require('execa')
 
@@ -19,9 +18,6 @@ async function readyGo() {
   const { stdout } = await run('git', ['diff'], { stdio: 'pipe' })
 
   if (stdout) {
-    step('\nLint code...')
-    await lintCode(stdout)
-
     step('\nCommitting changes...')
     await run('git', ['add', '-A'])
     await run('git', ['commit', '-m', `release: v${targetVersion} :tada:`])
@@ -45,19 +41,4 @@ function updateVersion(targetVersion) {
     const content = JSON.stringify(pkg, null, 2)
     fs.writeFileSync(`./${file}`, content, 'utf8')
   })
-}
-
-function lintCode(stdout) {
-  let arr = []
-
-  stdout.replace(/(diff\s--git\sa\/.{1,}(\s|\n|\t))b\//g, ($0, $1) => {
-    arr.push($1.replace(/diff\s--git\sa\//, ''))
-  })
-
-  arr = arr
-    .map(item => item.replace(/\s/g, ''))
-    .filter(item => path.extname(item) === '.ts')
-    .map(item => run('eslint', [item]))
-
-  return Promise.all(arr)
 }
