@@ -25,7 +25,7 @@ function lintCode(stdout) {
     arr.push($1.replace(/diff\s--git\sa\//, ''))
   })
 
-  arr = arr
+  arr
     .map(item => item.replace(/\s/g, ''))
     .filter(item => path.extname(item) === '.ts')
     .forEach(item => run('npm', ['run', 'lint:custom', item]))
