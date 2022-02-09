@@ -22,7 +22,7 @@ async function readyGo() {
 }
 
 function lintCode(stdout) {
-  let arr = []
+  const arr = []
 
   stdout.replace(/(diff\s--git\sa\/.{1,}(\s|\n|\t))b\//g, ($0, $1) => {
     arr.push($1.replace(/diff\s--git\sa\//, ''))
