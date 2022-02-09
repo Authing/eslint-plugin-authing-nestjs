@@ -34,6 +34,6 @@ function lintCode(stdout) {
     .forEach(item => run('npm', ['run', 'lint:custom', item]))
 }
 
-function test() {
+function test () {
   run('npm', ['run', 'test'])
 }
