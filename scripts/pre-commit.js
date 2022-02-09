@@ -13,6 +13,9 @@ async function readyGo() {
   if (stdout) {
     step('\nLint code...')
     lintCode(stdout)
+
+    step('\nUnit testing...')
+    test()
   } else {
     console.log('No changes to commit.')
   }
@@ -29,4 +32,8 @@ function lintCode(stdout) {
     .map(item => item.replace(/\s/g, ''))
     .filter(item => path.extname(item) === '.ts')
     .forEach(item => run('npm', ['run', 'lint:custom', item]))
+}
+
+function test() {
+  run('npm', ['run', 'test'])
 }
