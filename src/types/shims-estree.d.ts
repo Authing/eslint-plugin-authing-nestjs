@@ -68,10 +68,20 @@ declare module 'estree' {
 
   export interface MethodDefinition {
     decorators?: IDecorator[]
+    typeAnnotation?: {
+      typeAnnotation?: {
+        typeName?: TypeName
+      }
+    }
   }
 
   export interface PropertyDefinition {
     decorators?: IDecorator[]
+    typeAnnotation?: {
+      typeAnnotation?: {
+        typeName?: TypeName
+      }
+    }
   }
 
   export interface ITSInterfaceBody {

@@ -8,6 +8,8 @@ import {
 } from 'estree'
 
 const bodyParamMap = new Map()
+const preClassMap = new Map()
+const postClassMap = new Map()
 
 export const messages = {
   invalidDtoClassValidator: 'Each dto field must have a class validator',
@@ -22,30 +24,72 @@ export const useClassValidatorToDto = {
   create(context: IContext) {
     return {
       ClassDeclaration(node: ClassDeclaration) {
-        const config = bodyParamMap.get(node.id?.name)
-        if (!config) {
+        if (!node.id?.name) {
           return
         }
-        node.body.body.forEach(
-          (nodeItem: MethodDefinition | PropertyDefinition) => {
-            if (!nodeItem.decorators?.length) {
-              context.report({
-                node: config.node,
-                messageId: 'invalidDtoClassValidator'
-              })
-            } else if (
-              nodeItem.decorators.find(
-                decorator => decorator.expression.callee.name === 'IsOptional'
-              ) &&
-              nodeItem.decorators.length < 2
-            ) {
-              context.report({
-                node: config.node,
-                messageId: 'invalidDtoClassValidatorLength'
-              })
-            }
+
+        if (!preClassMap.has(node.id.name) && !bodyParamMap.has(node.id.name)) {
+          preClassMap.set(node.id.name, {
+            node
+          })
+        }
+
+        validateFn(node)
+
+        function validateFn(node: ClassDeclaration) {
+          if (!node.id?.name) {
+            return
           }
-        )
+
+          let config =
+            bodyParamMap.get(node.id.name) || postClassMap.get(node.id.name)
+
+          if (!config) {
+            return
+          }
+
+          if (typeof config === 'boolean') {
+            config = { node }
+          }
+
+          node.body.body.forEach(
+            (nodeItem: MethodDefinition | PropertyDefinition) => {
+              if (!nodeItem.decorators?.length) {
+                context.report({
+                  node: config.node,
+                  messageId: 'invalidDtoClassValidator'
+                })
+              } else if (
+                nodeItem.decorators.find(
+                  decorator => decorator.expression.callee.name === 'IsOptional'
+                ) &&
+                nodeItem.decorators.length < 2
+              ) {
+                context.report({
+                  node: config.node,
+                  messageId: 'invalidDtoClassValidatorLength'
+                })
+              } else if (
+                nodeItem.decorators.find(
+                  decorator =>
+                    decorator.expression.callee.name === 'ValidateNested'
+                )
+              ) {
+                const _typeNname: string | undefined =
+                  nodeItem?.typeAnnotation?.typeAnnotation?.typeName?.name
+                if (_typeNname) {
+                  if (preClassMap.has(_typeNname)) {
+                    bodyParamMap.set(_typeNname, preClassMap.get(_typeNname))
+                    validateFn(preClassMap.get(_typeNname).node)
+                    preClassMap.delete(_typeNname)
+                  } else {
+                    postClassMap.set(_typeNname, true)
+                  }
+                }
+              }
+            }
+          )
+        }
       },
       MethodDefinition: (node: MethodDefinition) => {
         const bodyParam: Pattern | undefined = node.value.params.find(p =>
