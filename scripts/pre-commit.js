@@ -7,8 +7,8 @@ const run = (bin, args, opts = {}) => execa.sync(bin, args, { stdio: 'inherit', 
 
 readyGo()
 
-async function readyGo() {
-  const { stdout } = await run('git', ['diff', '--cached'], { stdio: 'pipe' })
+function readyGo() {
+  const { stdout } = run('git', ['diff', '--cached'], { stdio: 'pipe' })
 
   if (stdout) {
     step('\nLint code...')
