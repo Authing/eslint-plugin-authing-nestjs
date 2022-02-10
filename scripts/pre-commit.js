@@ -22,16 +22,25 @@ async function readyGo() {
 }
 
 function lintCode(stdout) {
-  const arr = []
+  // There are no operations such as merging tsconfig for the time being
+  // so use Map to search rather than Array
+  const sensitivelyFilesMap = {
+    'tsconfig.json': true,
+    '.eslintrc': true,
+    '.prettierrc': true
+  }
+  const originDiffs = []
 
   stdout.replace(/(diff\s--git\sa\/.{1,}(\s|\n|\t))b\//g, ($0, $1) => {
-    arr.push($1.replace(/diff\s--git\sa\//, ''))
+    originDiffs.push($1.replace(/diff\s--git\sa\//, '').replace(/\s/g, ''))
   })
 
-  arr
-    .map(item => item.replace(/\s/g, ''))
-    .filter(item => path.extname(item) === '.ts')
-    .forEach(item => run('npm', ['run', 'lint:custom', item]))
+  if (originDiffs.some(diff => sensitivelyFilesMap[diff])) {
+    return run('npm', ['run', 'lint'])
+  }
+
+  const diffs = originDiffs.filter(item => path.extname(item) === '.ts')
+  diffs.forEach(item => run('npm', ['run', 'lint:custom', item]))
 }
 
 function test () {
