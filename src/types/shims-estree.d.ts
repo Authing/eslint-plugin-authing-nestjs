@@ -42,6 +42,9 @@ declare module 'estree' {
 
   export interface ITypeAnnotation extends IPureTypeAnnotation {
     parent: ITypeAnnotation
+    typeAnnotation?: {
+      typeName?: TypeName
+    }
   }
 
   export interface IPattern {
@@ -68,10 +71,12 @@ declare module 'estree' {
 
   export interface MethodDefinition {
     decorators?: IDecorator[]
+    typeAnnotation?: ITypeAnnotation
   }
 
   export interface PropertyDefinition {
     decorators?: IDecorator[]
+    typeAnnotation?: ITypeAnnotation
   }
 
   export interface ITSInterfaceBody {

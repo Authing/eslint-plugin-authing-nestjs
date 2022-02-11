@@ -17,13 +17,10 @@ RuleTester.setDefaultConfig({
   }
 })
 
-ruleTester.run(
-  'use-class-as-type-in-method-of-controller',
-  useClassAsTypeInMethodOfController,
-  {
-    invalid: [
-      {
-        code: `
+ruleTester.run('use-class-as-type-in-method-of-controller', useClassAsTypeInMethodOfController, {
+  invalid: [
+    {
+      code: `
         interface IType {
           name: string
         }
@@ -32,42 +29,42 @@ ruleTester.run(
           @Post() 
           createOne(@Body() data: IType) {} 
         }`,
-        errors: [
-          {
-            message: messages.invalidTypeAnnotation
-          }
-        ]
-      },
-      {
-        code: `
+      errors: [
+        {
+          message: messages.invalidTypeAnnotation
+        }
+      ]
+    },
+    {
+      code: `
         @Controller('example') 
         export class ExampleController { 
           @Post() 
           createOne(@Body() item) {} 
         }`,
-        errors: [
-          {
-            message: messages.invalidTypeAnnotation
-          }
-        ]
-      },
-      {
-        code: `
+      errors: [
+        {
+          message: messages.invalidTypeAnnotation
+        }
+      ]
+    },
+    {
+      code: `
         @Controller('example') 
         export class ExampleController { 
           @Post() 
           createOne(@Body() any) {} 
         }`,
-        errors: [
-          {
-            message: messages.invalidTypeAnnotation
-          }
-        ]
-      }
-    ],
-    valid: [
-      {
-        code: `
+      errors: [
+        {
+          message: messages.invalidTypeAnnotation
+        }
+      ]
+    }
+  ],
+  valid: [
+    {
+      code: `
       class IType {
         name: string
       }
@@ -76,7 +73,6 @@ ruleTester.run(
         @Post() 
         createOne(@Body() data: IType) {} 
       }`
-      }
-    ]
-  }
-)
+    }
+  ]
+})
