@@ -45,6 +45,12 @@ ruleTester.run('use-class-validator-to-nested-dto', useClassValidatorToNestedDto
           message: messages.invalidDtoClassValidator
         },
         {
+          message: messages.invalidTypeWithValidateNested
+        },
+        {
+          message: messages.invalidTypeWithValidateNested
+        },
+        {
           message: messages.invalidDtoClassValidator
         }
       ]
@@ -75,7 +81,13 @@ ruleTester.run('use-class-validator-to-nested-dto', useClassValidatorToNestedDto
         }`,
       errors: [
         {
+          message: messages.invalidTypeWithValidateNested
+        },
+        {
           message: messages.invalidDtoClassValidator
+        },
+        {
+          message: messages.invalidTypeWithValidateNested
         },
         {
           message: messages.invalidDtoClassValidatorLength
@@ -97,10 +109,12 @@ ruleTester.run('use-class-validator-to-nested-dto', useClassValidatorToNestedDto
           name: string
 
           @ValidateNested()
+          @Type(() => Args2)
           args2: Args2
         }
 
         class CreateOneDto {
+          @Type(() => Args1)
           @ValidateNested()
           args1: Args1
         }
