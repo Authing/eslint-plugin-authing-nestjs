@@ -126,4 +126,8 @@ declare module 'estree' {
     report: IReportFunction
     [name: string]: unknown
   }
+
+  export interface IValidateDtoFn {
+    (node: ClassDeclaration, context: IContext): void
+  }
 }
