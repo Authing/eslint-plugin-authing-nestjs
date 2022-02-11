@@ -10,6 +10,10 @@ import {
 } from 'estree'
 import { getDecoratorByName } from '../../utils'
 
+interface IConfig {
+  node: ClassDeclaration
+}
+
 export const bodyParamMap = new Map()
 export const preClassMap = new Map()
 export const postClassMap = new Map()
@@ -19,6 +23,27 @@ export const messages = {
   invalidDtoClassValidatorLength:
     'There must be at least 2 class validators for a dto item with IsOptional',
   invalidTypeWithValidateNested: 'Type and ValidateNested must appear at the same time'
+}
+
+export function forEachClassDefinitionBody(
+  node: ClassDeclaration,
+  context: IContext,
+  config: IConfig,
+  validateDto: IValidateDtoFn,
+  isNested: boolean
+) {
+  node.body.body.forEach((nodeItem: MethodDefinition | PropertyDefinition) => {
+    checkDtoClassValidator(nodeItem, context, config)
+    checkDtoClassValidatorLength(nodeItem, context, config)
+    if (
+      isNested &&
+      nodeItem?.decorators?.length &&
+      nodeItem.decorators.find(decorator => decorator.expression.callee.name === 'ValidateNested')
+    ) {
+      checkTypeWithValidateNested(node, nodeItem.decorators, context)
+      checkNestedDto(nodeItem, context, validateDto)
+    }
+  })
 }
 
 export function $MethodDefinition(node: MethodDefinition, context: IContext) {
@@ -39,10 +64,6 @@ export function $MethodDefinition(node: MethodDefinition, context: IContext) {
       messageId: 'invalidDtoClassValidator'
     })
   }
-}
-
-interface IConfig {
-  node: ClassDeclaration
 }
 
 function checkDtoClassValidator(
@@ -99,25 +120,4 @@ function checkTypeWithValidateNested(node: BaseNode, decorators: IDecorator[], c
       messageId: 'invalidTypeWithValidateNested'
     })
   }
-}
-
-export function forEachClassDefinitionBody(
-  node: ClassDeclaration,
-  context: IContext,
-  config: IConfig,
-  validateDto: IValidateDtoFn,
-  isNested: boolean
-) {
-  node.body.body.forEach((nodeItem: MethodDefinition | PropertyDefinition) => {
-    checkDtoClassValidator(nodeItem, context, config)
-    checkDtoClassValidatorLength(nodeItem, context, config)
-    if (
-      isNested &&
-      nodeItem?.decorators?.length &&
-      nodeItem.decorators.find(decorator => decorator.expression.callee.name === 'ValidateNested')
-    ) {
-      checkTypeWithValidateNested(node, nodeItem.decorators, context)
-      checkNestedDto(nodeItem, context, validateDto)
-    }
-  })
 }
