@@ -1,10 +1,5 @@
 import { getDecoratorByName } from '../../utils'
-import {
-  IContext,
-  ITSInterfaceDeclaration,
-  MethodDefinition,
-  Pattern
-} from 'estree'
+import { IContext, ITSInterfaceDeclaration, MethodDefinition, Pattern } from 'estree'
 
 const bodyParamMap = new Map()
 

@@ -12,15 +12,12 @@ export const forbidBodyParameters = {
   create(context: IContext) {
     return {
       MethodDefinition: (node: MethodDefinition) => {
-        const bodyParam: Pattern | undefined = node.value.params.find(
-          (p: Pattern) => getDecoratorByName(p, 'Body')
+        const bodyParam: Pattern | undefined = node.value.params.find((p: Pattern) =>
+          getDecoratorByName(p, 'Body')
         )
 
         if (bodyParam) {
-          const bodyDecorator: IDecorator | undefined = getDecoratorByName(
-            bodyParam,
-            'Body'
-          )
+          const bodyDecorator: IDecorator | undefined = getDecoratorByName(bodyParam, 'Body')
           if (bodyDecorator?.expression?.arguments?.length) {
             context.report({
               node: bodyDecorator,

@@ -1,11 +1,5 @@
 import { getDecoratorByName } from '../../utils'
-import {
-  MethodDefinition,
-  PropertyDefinition,
-  ClassDeclaration,
-  Pattern,
-  IContext
-} from 'estree'
+import { MethodDefinition, PropertyDefinition, ClassDeclaration, Pattern, IContext } from 'estree'
 
 const bodyParamMap = new Map()
 const preClassMap = new Map()
@@ -39,9 +33,7 @@ function validateDto(node: ClassDeclaration, context: IContext) {
         messageId: 'invalidDtoClassValidator'
       })
     } else if (
-      nodeItem.decorators.find(
-        decorator => decorator.expression.callee.name === 'IsOptional'
-      ) &&
+      nodeItem.decorators.find(decorator => decorator.expression.callee.name === 'IsOptional') &&
       nodeItem.decorators.length < 2
     ) {
       context.report({
@@ -49,9 +41,7 @@ function validateDto(node: ClassDeclaration, context: IContext) {
         messageId: 'invalidDtoClassValidatorLength'
       })
     } else if (
-      nodeItem.decorators.find(
-        decorator => decorator.expression.callee.name === 'ValidateNested'
-      )
+      nodeItem.decorators.find(decorator => decorator.expression.callee.name === 'ValidateNested')
     ) {
       const _typeNname: string | undefined =
         nodeItem?.typeAnnotation?.typeAnnotation?.typeName?.name
