@@ -79,7 +79,7 @@ module.exports = {
     // There must be at least 2 class validators for a dto item with IsOptional
     'authing-nestjs/use_class_validator_to_dto': 'warn',
 
-    // validate nested dto, the specific rules are the same as 'authing-nestjs/use_class_validator_to_dto'
+    // Validate nested dto, the specific rules are the same as 'authing-nestjs/use_class_validator_to_dto'
     'authing-nestjs/use_class_validator_to_nested_dto': 'off'
     
     // ... more
