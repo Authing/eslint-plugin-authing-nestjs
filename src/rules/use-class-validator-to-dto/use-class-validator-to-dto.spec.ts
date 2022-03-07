@@ -19,15 +19,37 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
   invalid: [
     {
       code: `
-        class IType {
-          name: string
-        }
-        @Controller('example') 
+        @Controller('example1') 
         export class ExampleController { 
-          @Post() 
-          createOne(@Body() data: IType) {} 
+          @Post()
+          createOne(@Body() createOne: CreateOneDto) {} 
+        }
+
+        class Args1 {
+          name: string
+
+          @ValidateNested()
+          args2: Args2
+        }
+
+        class CreateOneDto {
+          @ValidateNested()
+          args1: Args1
+        }
+
+        class Args2 {
+          name: string
         }`,
       errors: [
+        {
+          message: messages.invalidDtoClassValidator
+        },
+        {
+          message: messages.invalidTypeWithValidateNested
+        },
+        {
+          message: messages.invalidTypeWithValidateNested
+        },
         {
           message: messages.invalidDtoClassValidator
         }
@@ -35,31 +57,40 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
     },
     {
       code: `
-        class IType {
+        @Controller('example2') 
+        export class ExampleController { 
+          @Post()
+          createOne(@Body() createOne: CreateOneDto) {} 
+        }
+
+        class CreateOneDto {
+          @ValidateNested()
+          args1: Args1
+        }
+
+        class Args1 {
+          name: string
+
+          @ValidateNested()
+          args2: Args2
+        }
+
+        class Args2 {
           @IsOptional()
           name: string
-        }
-        @Controller('example') 
-        export class ExampleController { 
-          @Post() 
-          createOne(@Body() data: IType) {} 
         }`,
       errors: [
         {
-          message: messages.invalidDtoClassValidatorLength
-        }
-      ]
-    },
-    {
-      code: `
-        @Controller('example') 
-        export class ExampleController { 
-          @Post() 
-          createOne(@Body() a: any) {} 
-        }`,
-      errors: [
+          message: messages.invalidTypeWithValidateNested
+        },
         {
           message: messages.invalidDtoClassValidator
+        },
+        {
+          message: messages.invalidTypeWithValidateNested
+        },
+        {
+          message: messages.invalidDtoClassValidatorLength
         }
       ]
     }
@@ -67,27 +98,30 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
   valid: [
     {
       code: `
-        class IType {
+        @Controller('example3') 
+        export class ExampleController { 
+          @Post()
+          createOne(@Body() createOne: CreateOneDto) {} 
+        }
+
+        class Args1 {
           @IsString()
           name: string
+
+          @ValidateNested()
+          @Type(() => Args2)
+          args2: Args2
         }
-        @Controller('example') 
-        export class ExampleController { 
-          @Post() 
-          createOne(@Body() data: IType) {} 
-        }`
-    },
-    {
-      code: `
-        class IType {
+
+        class CreateOneDto {
+          @Type(() => Args1)
+          @ValidateNested()
+          args1: Args1
+        }
+
+        class Args2 {
           @IsString()
-          @IsOptional()
           name: string
-        }
-        @Controller('example') 
-        export class ExampleController { 
-          @Post() 
-          createOne(@Body() data: IType) {} 
         }`
     }
   ]

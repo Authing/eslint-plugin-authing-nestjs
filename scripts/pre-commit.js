@@ -1,6 +1,7 @@
 const path = require('path')
 const chalk = require('chalk')
 const execa = require('execa')
+const fs = require('fs')
 
 const step = msg => console.log(chalk.cyan(msg))
 const run = (bin, args, opts = {}) => execa.sync(bin, args, { stdio: 'inherit', ...opts })
@@ -29,11 +30,13 @@ function lintCode(stdout) {
     '.eslintrc': true,
     '.prettierrc': true
   }
-  const originDiffs = []
+  let originDiffs = []
 
   stdout.replace(/(diff\s--git\sa\/.{1,}(\s|\n|\t))b\//g, ($0, $1) => {
     originDiffs.push($1.replace(/diff\s--git\sa\//, '').replace(/\s/g, ''))
   })
+
+  originDiffs = originDiffs.filter(item => fs.existsSync(item))
 
   if (originDiffs.some(diff => sensitivelyFilesMap[diff])) {
     return run('npm', ['run', 'lint'])
