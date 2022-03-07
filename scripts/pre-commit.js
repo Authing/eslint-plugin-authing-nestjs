@@ -30,19 +30,17 @@ function lintCode(stdout) {
     '.eslintrc': true,
     '.prettierrc': true
   }
-  let originDiffs = []
+  const originDiffs = []
 
   stdout.replace(/(diff\s--git\sa\/.{1,}(\s|\n|\t))b\//g, ($0, $1) => {
     originDiffs.push($1.replace(/diff\s--git\sa\//, '').replace(/\s/g, ''))
   })
 
-  originDiffs = originDiffs.filter(item => fs.existsSync(item))
-
   if (originDiffs.some(diff => sensitivelyFilesMap[diff])) {
     return run('npm', ['run', 'lint'])
   }
 
-  const diffs = originDiffs.filter(item => path.extname(item) === '.ts')
+  const diffs = originDiffs.filter(item => fs.existsSync(item) && path.extname(item) === '.ts')
   diffs.forEach(item => run('npm', ['run', 'lint:custom', item]))
 }
 
