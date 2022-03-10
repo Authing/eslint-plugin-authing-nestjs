@@ -1,5 +1,4 @@
-import { useClassValidatorToDto } from './use-class-validator-to-dto'
-import { messages } from './refs'
+import { useClassValidatorToDto, messages } from './use-class-validator-to-dto'
 
 const { RuleTester } = require('eslint')
 
