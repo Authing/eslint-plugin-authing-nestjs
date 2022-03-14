@@ -20,9 +20,9 @@ export const preClassMap = new Map()
 export const postClassMap = new Map()
 
 export const messages = {
-  invalidDtoClassValidator: 'Each dto field must have a class validator',
+  invalidDtoClassValidator: 'Each DTO field must have a class validator',
   invalidDtoClassValidatorLength:
-    'There must be at least 2 class validators for a dto item with IsOptional',
+    'There must be at least 2 class validators for a DTO with IsOptional',
   invalidTypeWithValidateNested: 'Type and ValidateNested must appear at the same time'
 }
 
