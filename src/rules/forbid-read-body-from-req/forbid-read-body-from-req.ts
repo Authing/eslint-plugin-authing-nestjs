@@ -4,7 +4,7 @@ import { IContext, MemberExpression, MethodDefinition, Pattern } from 'estree'
 let reqName: string | undefined = 'req'
 
 export const messages = {
-  invalidBodyFromReq: 'It is forbidden to read body from Req'
+  invalidBodyFromReq: 'It is forbidden to read body from Req, eg: req.body'
 }
 
 export const forbidReadBodyFromReq = {

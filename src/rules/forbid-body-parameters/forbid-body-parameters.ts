@@ -2,7 +2,7 @@ import { getDecoratorByName } from '../../utils'
 import { MethodDefinition, Pattern, IDecorator, IContext } from 'estree'
 
 export const messages = {
-  invalidArgument: 'It is forbidden to use parameters in the @Body'
+  invalidArgument: 'It is forbidden to use parameters in the @Body, eg: @Body("name")'
 }
 
 export const forbidBodyParameters = {
