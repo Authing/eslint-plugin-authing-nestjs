@@ -15,9 +15,10 @@ interface IConfig {
   node: ClassDeclaration
 }
 
-export const bodyParamMap = new Map()
+// type annotation in @Body and nested DTO
 export const preClassMap = new Map()
 export const postClassMap = new Map()
+export const normalClassMap = new Map()
 
 export const messages = {
   invalidDtoClassValidator: 'Each DTO field must have a class validator',
@@ -37,7 +38,7 @@ export const useClassValidatorToDto = {
           return
         }
 
-        if (!preClassMap.has(node.id.name) && !bodyParamMap.has(node.id.name)) {
+        if (!preClassMap.has(node.id.name) && !normalClassMap.has(node.id.name)) {
           preClassMap.set(node.id.name, {
             node
           })
@@ -82,7 +83,7 @@ function $MethodDefinition(node: MethodDefinition, context: IContext) {
 
   const { typeAnnotation } = bodyParam
   if (typeAnnotation?.typeAnnotation?.typeName?.name) {
-    bodyParamMap.set(typeAnnotation.typeAnnotation.typeName.name, {
+    normalClassMap.set(typeAnnotation.typeAnnotation.typeName.name, {
       node
     })
   } else {
@@ -131,7 +132,7 @@ function checkNestedDto(
   const _typeNname: string | undefined = nodeItem?.typeAnnotation?.typeAnnotation?.typeName?.name
   if (_typeNname) {
     if (preClassMap.has(_typeNname)) {
-      bodyParamMap.set(_typeNname, preClassMap.get(_typeNname))
+      normalClassMap.set(_typeNname, preClassMap.get(_typeNname))
       validateDto(preClassMap.get(_typeNname).node, context)
       preClassMap.delete(_typeNname)
     } else {
@@ -154,7 +155,7 @@ function validateDto(node: ClassDeclaration, context: IContext): void {
     return
   }
 
-  let config = bodyParamMap.get(node.id.name) || postClassMap.get(node.id.name)
+  let config = normalClassMap.get(node.id.name) || postClassMap.get(node.id.name)
 
   if (!config) {
     return
