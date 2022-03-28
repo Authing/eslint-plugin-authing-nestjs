@@ -121,6 +121,17 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
         class Args2 {
           @IsString()
           name: string
+
+          public static ValueOfGroupEntity(data: any) {
+            data.description = data.description ?? '';
+            return plainToClass(UpdateCityDto, data, {
+              excludeExtraneousValues: true,
+            });
+          }
+        
+          public static ValueOfGroupEntityList(data: []) {
+            return data.map((item) => UpdateCityDto.ValueOfGroupEntity(item));
+          }
         }`
     }
   ]
