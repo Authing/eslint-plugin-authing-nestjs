@@ -61,8 +61,13 @@ function forEachClassDefinitionBody(
   isNested: boolean
 ) {
   node.body.body.forEach((nodeItem: MethodDefinition | PropertyDefinition) => {
+    if (nodeItem.type !== 'PropertyDefinition') {
+      return
+    }
+
     checkDtoClassValidator(nodeItem, context, config)
     checkDtoClassValidatorLength(nodeItem, context, config)
+
     if (
       isNested &&
       nodeItem?.decorators?.length &&
