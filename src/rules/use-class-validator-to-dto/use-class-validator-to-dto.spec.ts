@@ -41,10 +41,10 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
         }`,
       errors: [
         {
-          message: messages.invalidDtoClassValidator
+          message: messages.invalidTypeWithValidateNested
         },
         {
-          message: messages.invalidTypeWithValidateNested
+          message: messages.invalidDtoClassValidator
         },
         {
           message: messages.invalidTypeWithValidateNested
@@ -83,10 +83,10 @@ ruleTester.run('use-class-validator-to-dto', useClassValidatorToDto, {
           message: messages.invalidTypeWithValidateNested
         },
         {
-          message: messages.invalidDtoClassValidator
+          message: messages.invalidTypeWithValidateNested
         },
         {
-          message: messages.invalidTypeWithValidateNested
+          message: messages.invalidDtoClassValidator
         },
         {
           message: messages.invalidDtoClassValidatorLength

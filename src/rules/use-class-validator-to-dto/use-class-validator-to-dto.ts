@@ -65,7 +65,7 @@ function forEachClassDefinitionBody(
       return
     }
 
-    checkDtoClassValidator(nodeItem, context, config)
+    checkDtoClassValidator(nodeItem, context)
     checkDtoClassValidatorLength(nodeItem, context, config)
 
     if (
@@ -101,12 +101,11 @@ function $MethodDefinition(node: MethodDefinition, context: IContext) {
 
 function checkDtoClassValidator(
   nodeItem: MethodDefinition | PropertyDefinition,
-  context: IContext,
-  config: IConfig
+  context: IContext
 ) {
   if (!nodeItem.decorators?.length) {
     context.report({
-      node: config.node,
+      node: nodeItem,
       messageId: 'invalidDtoClassValidator'
     })
   }
