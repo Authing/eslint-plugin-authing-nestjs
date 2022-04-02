@@ -4,7 +4,8 @@ import { IContext, ITSInterfaceDeclaration, MethodDefinition, Pattern } from 'es
 const bodyParamMap = new Map()
 
 export const messages = {
-  invalidTypeAnnotation: 'The parameter type annotation in the function must be a class'
+  invalidTypeAnnotation:
+    'The @Body type annotation in the function must be a class, eg: @Body() dto: ClassDto'
 }
 
 export const useClassAsTypeInMethodOfController = {

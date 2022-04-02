@@ -72,7 +72,7 @@ module.exports = {
     // It is forbidden to read body from Req, eg: req.body
     'authing-nestjs/forbid_read_body_from_req': 'warn',
 
-    // The parameter type annotation in the function must be a class
+    // The @Body type annotation in the function must be a class, eg: @Body() dto: ClassDto
     'authing-nestjs/use_class_as_type_in_method_of_controller': 'warn',
 
     // Each DTO field must have a class validator
