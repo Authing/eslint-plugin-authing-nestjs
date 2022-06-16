@@ -77,7 +77,7 @@ module.exports = {
 
     // Each DTO field must have a class validator
     // There must be at least 2 class validators for a DTO with IsOptional
-    // For nestd DTO，Type and ValidateNested must appear at the same time
+    // For nested DTO，Type and ValidateNested must appear at the same time
     'authing-nestjs/use_class_validator_to_dto': 'warn',
     
     // ... more
