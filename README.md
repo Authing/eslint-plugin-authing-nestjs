@@ -106,3 +106,8 @@ Join us on forum: [#authing-chat](https://forum.authing.cn/)
 [MIT](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2022 Authing
+
+## Links
+
+- [AuthingMove](https://github.com/Authing/AuthingMove)
+- [authingmove-template](https://github.com/Authing/authingmove-template)
